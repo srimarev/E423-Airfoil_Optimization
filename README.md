@@ -3,35 +3,38 @@
 
 ## Overview
 
-This project focuses on the optimization of the Eppler 423 (E423) airfoil to improve aerodynamic efficiency under specified operating conditions.
+This project focuses on the aerodynamic optimization of the Eppler 423 (E423) airfoil to improve lift-to-drag ratio (L/D) under the specified operating conditions of the Honeywell Aerospace Design-A-Thon challenge.
 
-## Objective
+## Problem Statement
+Optimize an airfoil from the UIUC Airfoil Database to achieve maximum aerodynamic efficiency while satisfying the following constraints:
 
-Improve the Lift-to-Drag Ratio (L/D) while satisfying:
-
-- Reynolds Number = 500,000
-- Mach Number = 0.1
-- Angle of Attack = 5°
-- Minimum thickness-to-chord ratio ≥ 10%
+- Reynolds Number: 500,000
+- Mach Number: 0.1
+- Angle of Attack: 0°–10°
+- Minimum thickness-to-chord ratio: 10%
 
 ## Methodology
 
-1. Airfoil screening using UIUC database
-2. Baseline selection (E423)
-3. Parametric geometry optimization
-4. XFLR5 aerodynamic analysis
-5. ANSYS Fluent CFD validation
+1. Screened multiple UIUC airfoils using XFLR5.
+2. Selected E423 as the baseline airfoil based on aerodynamic performance.
+3. Performed constraint-driven geometric optimization by modifying:
+   - Thickness-to-chord ratio
+   - Maximum thickness position
+   - Camber magnitude
+4. Preserved structural feasibility by maintaining t/c ≥ 10%.
+5. Evaluated aerodynamic performance using XFLR5.
+6. Validated the optimized design through 3D CFD analysis in ANSYS Fluent.
 
-## Geometry Changes
+## Airfoil Geometry Comparison
 
 | Parameter              | Baseline | Optimized |
-|------------            |----------|-----------|
+|------------------------|----------|-----------|
 | Thickness (%)          | 12.52    | 10.03     |
 | Thickness Position (%) | 26.13    | 23.72     |
 | Max Camber (%)         | 10.05    | 10.50     |
 | Camber Position (%)    | 44.04    | 44.04     |
 
-## Results
+## XFLR5 Results
 
 | Parameter | Baseline | Optimized |
 |-----------|----------|-----------|
@@ -39,23 +42,40 @@ Improve the Lift-to-Drag Ratio (L/D) while satisfying:
 | Cd @ 5°   | 0.01317  | 0.01289   |
 | L/D @ 5°  | 120.743  | 129.944   |
 
-### Improvement
+### Performance Improvement
 
-L/D Improvement = 7.62%
+- Lift coefficient increased by approximately 5.4%
+- Drag coefficient reduced
+- Lift-to-drag ratio improved by approximately 7.6%
 
-### CFD Validation
+## CFD Validation
 
-Baseline Cl = 0.47
+To complement the 2D XFLR5 analysis, a 3D CFD study was performed in ANSYS Fluent to account for finite-span effects and more realistic flow behavior.
 
-Optimized Cl = 0.50
+### CFD Results
 
-Lift Improvement = 6.4%
+| Parameter             | Baseline E423 | Optimized E423 |
+|-----------------------|---------------|----------------|
+| Lift Coefficient (Cl) | 0.47          | 0.50           |
+
+**Lift Improvement:** 6.4%
+
+Velocity and pressure contours indicated stronger flow acceleration and a larger low-pressure region over the upper surface of the optimized airfoil, supporting the observed lift improvement.
 
 ## Tools Used
 
 - XFLR5
 - ANSYS Fluent
 - SolidWorks
+
+## Repository Contents
+
+- Baseline E423 airfoil coordinates (.dat)
+- Optimized E423 airfoil coordinates (.dat)
+- XFLR5 aerodynamic analysis plots
+- CFD velocity contours
+- CFD pressure contours
+- Final project presentation
 
 ## Team Members
 
